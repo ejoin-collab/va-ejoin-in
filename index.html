@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VA.ejoin — Your Personal Virtual Assistant</title>
+  <meta name="description" content="On-call booking assistant — book flights, hotels, cars. Fast, transparent, and secure." />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-dot" aria-hidden="true"></div>
+        <div class="brand-text">
+          <h1>VA.ejoin</h1>
+          <p class="tag">Your Personal Virtual Assistant — Anywhere, Anytime</p>
+        </div>
+      </div>
+      <nav class="nav-cta">
+        <a class="btn btn-ghost" href="tel:+1XXXXXXXXXX" id="call-now">Call Now</a>
+        <a class="btn btn-primary" href="#contact">Request Callback</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero-left">
+        <h2>Your personal booking assistant — fast, clear, and reliable.</h2>
+        <p class="lead">I’ll book flights, hotels, cars and explain everything to you clearly. Pay in USD — secure payments via Stripe & Wise.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Request Callback</a>
+          <a class="btn btn-outline" href="tel:+1XXXXXXXXXX">Talk to AI Receptionist</a>
+        </div>
+        <ul class="trust">
+          <li>✅ 15+ years CX experience</li>
+          <li>✅ Secure USD payments</li>
+          <li>✅ Transparent pricing</li>
+        </ul>
+      </div>
+
+      <div class="hero-right">
+        <div class="card">
+          <h3>Quick Booking (example)</h3>
+          <p><strong>$10 / per booking</strong> • <strong>$50 / day (5 hours)</strong></p>
+          <p class="small">Need something urgent? Call now and let the AI receptionist filter & qualify the request before I call you back.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how container">
+      <h3>How it works</h3>
+      <ol class="steps">
+        <li><strong>Tell us:</strong> Fill the form or call the US number</li>
+        <li><strong>AI filters & summarizes:</strong> Smart pre-qualification (voice or form)</li>
+        <li><strong>I confirm & book:</strong> I call back to finalize and complete your booking</li>
+      </ol>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing container">
+      <h3>Pricing</h3>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h4>Per Booking</h4>
+          <p class="price">$10</p>
+          <p class="muted">Quick tasks (restaurant, single hotel, small bookings)</p>
+        </div>
+        <div class="price-card popular">
+          <h4>Day Pass</h4>
+          <p class="price">$50</p>
+          <p class="muted">5 hours availability — best for heavy days</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="contact container">
+      <h3>Request Callback</h3>
+      <p class="muted">Fill the form and our AI will pre-qualify your request. We'll call to confirm before booking.</p>
+
+      <form id="leadForm" class="form" autocomplete="off">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Phone (with country code)</label>
+          <input id="phone" name="phone" type="tel" placeholder="+1..." required />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email (optional)</label>
+          <input id="email" name="email" type="email" />
+        </div>
+
+        <div class="form-row">
+          <label for="message">What do you want booked?</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <!-- Hidden metadata for tracking -->
+        <input type="hidden" name="page" value="va.ejoin.in" />
+        <input type="hidden" name="utm_source" id="utm_source" value="" />
+        <input type="hidden" name="timestamp" id="timestamp" value="" />
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Send Request</button>
+          <button type="button" class="btn btn-ghost" id="call-me">Or call me</button>
+        </div>
+
+        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <!-- VOICE AI PROMO -->
+    <section class="voice container">
+      <h3>Talk to our Voice AI Receptionist (VAR)</h3>
+      <p>Call our US number and the AI receptionist will interact with you to collect details, summarize the request and send it to us for confirmation.</p>
+      <div class="voice-ctas">
+        <a class="btn btn-primary" href="tel:+1XXXXXXXXXX">Call the AI Now</a>
+        <a class="btn btn-outline" href="#contact">Request Callback Instead</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© VA.ejoin • va@ejoin.in</div>
+        <div class="legal">
+          <a href="/terms">Terms</a> • <a href="/privacy">Privacy</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
