@@ -1,14 +1,16 @@
-// main.js — lightweight form handler with placeholders for Apps Script and UTM capture
+// main.js — Form handler for va.ejoin.in (frontend → FastAPI backend)
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('leadForm');
   const status = document.getElementById('formStatus');
   const callNow = document.getElementById('call-now');
   const callMeBtn = document.getElementById('call-me');
 
-  // === CONFIG: Insert your Apps Script Web App URL here ===
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+  // === CONFIG: Replace with your FastAPI backend URL later ===
+  // Local dev: http://127.0.0.1:8000/submit_lead
+  // Prod (Railway/Render): https://your-backend-url/submit_lead
+  const API_URL = 'http://127.0.0.1:8000/submit_lead';
 
-  // Tel link placeholder — replace +1XXXXXXXXXX with your Twilio number
+  // Tel link placeholder — replace with your Twilio number later
   const TEL_NUMBER = '+1XXXXXXXXXX';
   callNow.href = `tel:${TEL_NUMBER}`;
   callMeBtn.addEventListener('click', () => {
@@ -24,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     status.textContent = 'Sending…';
+
     const data = {
       name: form.name.value.trim(),
       phone: form.phone.value.trim(),
@@ -41,27 +44,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     try {
-      // POST to Apps Script which will handle AI filtering & sheet logging
-      const res = await fetch(APPS_SCRIPT_URL, {
+      // POST to FastAPI backend
+      const res = await fetch(API_URL, {
         method: 'POST',
-        mode: 'cors',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
 
       if (!res.ok) throw new Error('Network response not ok');
+
       const json = await res.json();
+
       if (json && json.status === 'ok') {
-        status.textContent = 'Thanks — your request is received. We will call to confirm shortly.';
+        status.textContent = '✅ Thanks — your request is received. We will call to confirm shortly.';
         form.reset();
       } else if (json && json.status === 'spam') {
-        status.textContent = 'Your request looks suspicious and was not submitted. If this is an error, please call us.';
+        status.textContent = '⚠️ Your request looks suspicious and was not submitted. If this is an error, please call us.';
       } else {
-        status.textContent = 'Received — we will contact you soon.';
+        status.textContent = 'ℹ️ Received — we will contact you soon.';
       }
     } catch (err) {
       console.error(err);
-      status.textContent = 'There was an error submitting. If it persists, please email va@ejoin.in';
+      status.textContent = '❌ There was an error submitting. If it persists, please email va@ejoin.in';
     }
   });
 });
