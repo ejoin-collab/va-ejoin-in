@@ -1,72 +1,172 @@
-:root{
-  --primary:#0A2342;
-  --accent:#00B86B;
-  --secondary:#F4A261;
-  --muted:#6B7280;
-  --bg:#fff;
-  --maxw:1100px;
-  --radius:10px;
-  --gap:1rem;
+:root {
+  --primary: #0A2342;
+  --accent: #00B86B;
+  --secondary: #F4A261;
+  --light: #F9FAFB;
 }
-*{box-sizing:border-box}
-html,body{height:100%;}
-body{
-  margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-  color:var(--primary);background:linear-gradient(180deg,#ffffff 0%, #f7fbfa 100%);
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: var(--light);
+  color: var(--primary);
+  line-height: 1.6;
 }
-.container{max-width:var(--maxw);margin:0 auto;padding:1rem;}
-.site-header{background:var(--bg);border-bottom:1px solid #eef2f6;position:sticky;top:0;z-index:40}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
-.brand{display:flex;gap:0.75rem;align-items:center}
-.logo-dot{width:40px;height:40px;border-radius:8px;background:var(--primary);box-shadow:0 6px 15px rgba(10,35,66,0.08)}
-.brand-text h1{margin:0;font-size:1rem;color:var(--primary)}
-.tag{margin:0;font-size:0.8rem;color:var(--muted)}
 
-.nav-cta .btn{margin-left:0.5rem}
-
-/* Buttons */
-.btn{display:inline-block;padding:0.6rem 0.9rem;border-radius:8px;font-weight:600;text-decoration:none;border:0;cursor:pointer}
-.btn-primary{background:var(--accent);color:white}
-.btn-outline{background:transparent;border:1px solid rgba(10,35,66,0.06);color:var(--primary)}
-.btn-ghost{background:transparent;color:var(--primary)}
-
-.hero{display:grid;grid-template-columns:1fr;gap:1rem;padding:2rem 0}
-.hero-left h2{font-size:1.4rem;margin:0 0 0.5rem}
-.lead{color:var(--muted);margin:0 0 1rem}
-.hero-ctas{display:flex;gap:0.5rem;margin-bottom:1rem}
-.trust{list-style:none;padding:0;margin:0;color:var(--muted)}
-.hero-right{display:flex;align-items:center;justify-content:center}
-.card{background:white;border-radius:12px;padding:1rem;box-shadow:0 8px 30px rgba(10,35,66,0.06);width:100%}
-
-/* How it works */
-.how{padding:1.5rem 0}
-.steps{padding-left:1rem;color:var(--muted)}
-
-/* Pricing */
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.price-card{background:white;padding:1rem;border-radius:12px;box-shadow:0 6px 20px rgba(10,35,66,0.04)}
-.price-card.popular{border:2px solid var(--accent)}
-
-/* Contact form */
-.contact{padding:1.5rem 0}
-.form{display:block;gap:0.8rem}
-.form-row{margin-bottom:0.75rem}
-.form-row label{display:block;font-size:0.85rem;margin-bottom:0.25rem;color:var(--primary)}
-.form-row input,.form-row textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid #e6eef4}
-.form-actions{display:flex;gap:0.6rem;align-items:center;margin-top:0.5rem}
-.form-status{margin-top:0.6rem;color:var(--muted);font-size:0.9rem}
-
-/* Voice section */
-.voice{padding:1.5rem 0}
-.voice-ctas{display:flex;gap:0.5rem}
-
-/* Footer */
-.site-footer{padding:1rem 0;background:transparent;border-top:1px solid #eef2f6}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
-
-/* Responsive */
-@media(min-width:900px){
-  .hero{grid-template-columns:1fr 420px;align-items:center}
-  .pricing-grid{grid-template-columns:repeat(2,1fr)}
+/* Hero */
+.hero {
+  background: var(--primary);
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
 }
+
+.hero .btn {
+  padding: 0.8rem 1.5rem;
+  margin: 0.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn.primary { background: var(--accent); color: #fff; }
+.btn.secondary { background: var(--secondary); color: #fff; }
+
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(0, 184, 107, 0.5); /* green glow */
+}
+
+/* Optional: give secondary button its own glow */
+.btn.secondary:hover {
+  box-shadow: 0 0 18px rgba(244, 162, 97, 0.6); /* orange glow */
+}
+
+
+/* Sections */
+section { padding: 3rem 2rem; max-width: 1000px; margin: auto; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card, .tier, .va-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover, .tier:hover, .va-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Service Tile Headers */
+.tier h3 {
+  margin-top: 0;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.tier:nth-child(1) h3 { background: #00B86B; }
+.tier:nth-child(2) h3 { background: #0A2342; }
+.tier:nth-child(3) h3 { background: #F4A261; }
+
+/* Pricing Table */
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: center;
+}
+table th { background: var(--primary); color: #fff; }
+
+/* VA List */
+#va-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.va-card h3 { margin-top: 0; }
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.online { background: var(--accent); }
+.offline { background: red; }
+
+/* Bio & Consultation */
+.bio, .consultation {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.consultation form {
+  display: flex;
+  flex-direction: column;
+}
+
+.consultation input, .consultation textarea {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.consultation button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Contact Section */
+#contact {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.icon-btn {
+  font-size: 1.8rem;
+  color: white;
+  background: #333;
+  padding: 0.8rem;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.icon-btn.whatsapp { background: #25d366; }
+.icon-btn.telegram { background: #0088cc; }
+.icon-btn.call { background: #00B86B; }
+
